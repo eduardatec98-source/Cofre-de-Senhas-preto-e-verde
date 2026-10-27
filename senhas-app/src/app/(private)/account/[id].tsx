@@ -20,20 +20,22 @@ export default function AccountDetail() {
       </View>
     );
   }
+  
+function confirmDelete() {
+  if (!account) return;
 
-  function confirmDelete() {
-    Alert.alert('Excluir conta', `Remover "${account.site}"?`, [
-      { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Excluir',
-        style: 'destructive',
-        onPress: async () => {
-          await removeAccount(account.id);
-          router.back();
-        },
+  Alert.alert('Excluir conta', `Remover "${account.site}"?`, [
+    { text: 'Cancelar', style: 'cancel' },
+    {
+      text: 'Excluir',
+      style: 'destructive',
+      onPress: async () => {
+        await removeAccount(account.id);
+        router.back();
       },
-    ]);
-  }
+    },
+  ]);
+}
 
   return (
     <View style={styles.screen}>
